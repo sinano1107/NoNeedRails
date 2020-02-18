@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>N中ツイッター</title>
+
+</head>
+
+<body>
+
+
+  <div class="row">
+    <nav class="header col s12">
+      <div class="nav-wrapper row">
+        <a id="menu-btn" href="#" data-target="slide-out" class="sidenav-trigger col s1">
+          <i id="menu-icon" class="material-icons">menu</i>
+        </a>
+        <a href="#" class="brand-logo col s2">Logo</a>
+        <form>
+          <div class="input-field right">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+  <ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <%= image_tag '/yadokari.jpeg' %>
+      </div>
+      <a href="#user"><%= image_tag '/yazyu.jpeg', class: "circle" %></a>
+      <a href="#name"><span class="white-text name">John Doe</span></a>
+      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
+
+  <div class="row" id="body">
+
+    <div class="col s3 grid" id="left-grid">
+      <div class="collection">
+        <a href="#!" class="collection-item">Alvin</a>
+        <a href="#!" class="collection-item active">Alvin</a>
+        <a href="#!" class="collection-item">Alvin</a>
+        <a href="#!" class="collection-item">Alvin</a>
+      </div>
+    </div>
+
+    <div class="col s3"></div>
+    <div class="col s6 grid" id="center-grid">
+      <ul class="collection">
+
+        <% @posts.each do |post| %>
+        <li id="post" class="collection-item avatar">
+          <%= image_tag '/yazyu.jpeg', class: 'circle' %>
+          <span id="user_name_<%= post.id %>" class="title" style="font-size: 20px;">野獣せんぴゃい</span>
+          <div class="row">
+            <p id="content_<%= post.id %>" class="content col s11" style="white-space: pre-wrap; word-wrap: break-word;"><%= post.content %></p>
+            <div class="col s1 secondary-content">
+              <button class="waves-effect waves-teal btn-flat"><i class="material-icons red-text">favorite</i></button>
+              <button class="more-btn waves-effect waves-teal btn-flat modal-trigger" href="#post-modal"><i id="<%= post.id %>" class="material-icons">more_vert</i></button>
+            </div>
+          </div>
+
+
+        </li>
+        <% end %>
+      </ul>
+
+
+      <a id="make-btn" class="waves-effect btn-floating btn-large red modal-trigger right" href="#make-modal">
+        <i class="large material-icons">mode_edit</i>
+      </a>
+
+    </div>
+
+    <div class="col s3 grid" id="right-grid">
+
+
+      <ul id="tabs-swipe-demo" class="tabs">
+        <li class="tab col s6"><a href="#test-swipe-1">new</a></li>
+        <li class="tab col s6"><a href="#test-swipe-2">popular</a></li>
+      </ul>
+      <div id="test-swipe-1" class="col s12">
+        <div class="row">
+          <ul id="group-list" class="collapsible col s12">
+            <li>
+              <div class="collapsible-header">
+                <div id="group-post" class="row valign-wrapper">
+                  <div class="col s3"><%= image_tag '/yazyu.jpeg', class: "circle responsive-img" %></div>
+                  <div class="col s9"><span class="black-text">N中淫夢同好会<span></div>
+                </div>
+              </div>
+              <div class="collapsible-body">
+                <span id="group-content">N中淫夢同好会だゾ<br>114514</span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <div id="group-post" class="row valign-wrapper">
+                  <div class="col s3"><%= image_tag '/fortnite-icon.jpg', class: "circle responsive-img" %></div>
+                  <div class="col s9">
+                    <span class="black-text">フォトナ廃人の集い</span>
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-body">
+                <span id="group-content">フォトなやろうぜ</span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <div id="group-post" class="row valign-wrapper">
+                  <div class="col s3">
+                    <%= image_tag '/piano-icon.jpg', class: "circle responsive-img" %>
+                  </div>
+                  <div class="col s9"><span class="black-text">pianist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-body"><span id="group-content">ピアノ弾ける人一緒に練習しませんか？</span></div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <div id="group-post" class="row valign-wrapper">
+                  <div class="col s3">
+                    <%= image_tag '/atom-icon.jpg', class: "circle responsive-img" %>
+                  </div>
+                  <div class="col s9"><span class="black-text">プログラマー</span></div>
+                </div>
+              </div>
+              <div class="collapsible-body">
+                <span id="group-content">プログラマ一緒に開発しましょう<br>参加待ってます！！</span>
+              </div>
+            </li>
+            </ul>
+          </div>
+      </div>
+      <div id="test-swipe-2" class="col s12">
+        <div class="row">
+          <ul id="group-list" class="collapsible col s12">
+            <li>
+              <div class="collapsible-header">
+                <div id="group-post" class="row valign-wrapper">
+                  <div class="col s3">
+                    <%= image_tag '/yazyu.jpeg', class: "circle responsive-img" %>
+                  </div>
+                  <div class="col s9">
+                    <span class="black-text">N中淫夢同好会</span>
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-body">
+                <span id="group-content">N中淫夢同好会だゾ<br>114514</span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <div id="group-post" class="row valign-wrapper">
+                  <div class="col s3">
+                    <%= image_tag '/fortnite-icon.jpg', class: "circle responsive-img" %>
+                  </div>
+                  <div class="col s9">
+                    <span class="black-text">フォトナ廃人の集い</span>
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-body">
+                <span id="group-content">フォトなやろうぜ</span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <div id="group-post" class="row valign-wrapper">
+                  <div class="col s3">
+                    <%= image_tag '/piano-icon.jpg', class: "circle responsive-img" %>
+                  </div>
+                  <div class="col s9">
+                    <span class="black-text">
+                      pianist
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-body">
+                <span id="group-content">ピアノ弾ける人一緒に練習しませんか？</span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <div id="group-post" class="row valign-wrapper">
+                  <div class="col s3">
+                    <%= image_tag '/atom-icon.jpg', class: "circle responsive-img" %>
+                  </div>
+                  <div class="col s9">
+                    <span class="black-text">プログラマー</span>
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-body">
+                <span id="group-content">プログラマ一緒に開発しましょう<br>参加待ってます！！</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="make-modal" class="modal bottom-sheet">
+      <div class="modal-content">
+        <%= form_tag("/processing/make_post") do %>
+        <div class="row">
+          <div class="input-field col s11">
+            <textarea name="content" id="textarea" class="materialize-textarea" data-length="30"></textarea>
+            <label for="textarea">今、何してんだよ！？</label>
+          </div>
+          <div class="col s1">
+            <button type="submit" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">send</i></button>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="post-modal" class="modal">
+      <div class="modal-content">
+        <div class="row">
+          <%= image_tag '/yazyu.jpeg', class: "circle col s2" %>
+          <h4 id="modal_user_name" class="col s10"></h4>
+
+          <div class="col s2"></div>
+          <p id="modal_content" class="col s9" style="font-size: 20px; white-space: pre-wrap; word-wrap: break-word;"></p>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</body>
+</html>
